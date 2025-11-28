@@ -2,8 +2,7 @@ from django.db import models
 
 class Poll(models.Model):
     title = models.CharField(max_length=200)
-    accessibility_note = models.TextField(blank=True)
-    pub_date = models.DateTimeField(auto_now_add=True)
+    description = models.TextField()  # Must exist!
 
     def __str__(self):
         return self.title

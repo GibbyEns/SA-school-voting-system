@@ -8,8 +8,7 @@ class ChoiceInline(admin.TabularInline):
 
 # Customize the admin view for Poll
 class PollAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description')  # columns to show in the Poll list view
-    inlines = [ChoiceInline]  # include the ChoiceInline here
+    list_display = ('title', 'description')  # Must match model fields exactly
 
 # Register the Poll model with the custom admin
 admin.site.register(Poll, PollAdmin)
