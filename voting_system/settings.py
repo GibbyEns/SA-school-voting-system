@@ -98,7 +98,11 @@ USE_TZ = True
 
 # Static files (CSS, JS, images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']  # optional if you create a project-level static folder
+STATICFILES_DIRS = [BASE_DIR / "votes"/'static']  # optional if you create a project-level static folder
+
+
+# For production
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

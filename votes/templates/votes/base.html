@@ -1,31 +1,15 @@
-{% load static %}
+ {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Accessible Voting System</title>
-  <link rel="stylesheet" href="{% static 'votes/css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Accessible Voting System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'votes/css/style.css' %}">
 </head>
 <body>
-  <div class="accessibility-toolbar" role="toolbar" aria-label="Accessibility toolbar">
-    <button onclick="toggleContrast()" aria-pressed="false">High contrast</button>
-    <button onclick="increaseFont()">A+</button>
-    <button onclick="decreaseFont()">A-</button>
-    <button id="audioToggle" onclick="toggleAudio()">🔊 Audio</button>
-  </div>
-
-  <header>
-    <h1 id="site-title">Accessible Voting & Survey System</h1>
-  </header>
-
-  <main class="container" role="main">
     {% block content %}{% endblock %}
-  </main>
 
-  <footer>
-    Created by Xolewe, Nongcebo, Wendy, Asemahle | GirlCode Project
-  </footer>
-
-  <script src="{% static 'votes/js/script.js' %}" defer></script>
+    {% block scripts %}{% endblock %}
 </body>
+</html>

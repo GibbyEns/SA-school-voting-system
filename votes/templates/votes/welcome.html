@@ -2,50 +2,43 @@
 {% load static %}
 
 {% block content %}
-<script src="{% static 'votes/js/welcome.js' %}"></script>
-{% endblock%}
-
-
 <div id="welcome-page">
     <img src="{% static 'votes/images/welcome.jpg' %}" 
          alt="Welcome image showing learners" class="welcome-image">
 
-         <ul>
-            {%for poll in polls %}
-            <li>
-                <a href="{% url 'polls:survey' poll.id %}">
-                    {{ poll.question }}
-                </a>
-            </li>
-            {% empty %}
-            <li>No polls available at the moment.</li>
-            {% endfor %}
-            </ul>
-            
-            
+    <ul>
+        {% for poll in polls %}
+        <li>
+            <a href="{% url 'polls:survey' poll.id %}">
+                {{ poll.question }}
+            </a>
+        </li>
+        {% empty %}
+        <li>No polls available at the moment.</li>
+        {% endfor %}
+    </ul>
+
     <h2>Welcome!</h2>
     <p>This system helps South African learners including those with disabilities 
        to vote on educational issues like safety and accessibility.</p>
-        
-      <!--ACTION BUTTONS -ONLY SHOW IF POLL EXIST --> 
-       {% if polls %}
+
+    {% if polls %}
     <div class="actions">
         <a class="btn" href="{% url 'polls:vote' polls.0.id %}">🗳️ Vote Now</a>
-        <a class="btn" href="{% url 'polls:survey' polls.0.id%}">📝 Take Survey</a>
+        <a class="btn" href="{% url 'polls:survey' polls.0.id %}">📝 Take Survey</a>
         <a class="btn" href="{% url 'polls:results' polls.0.id %}">📊 View Results</a>
-        <!-- Voice control button -->
         <button class="btn" onclick="startVoiceMenu()">🎤 Start Voice Control</button>
     </div>
-    {%endif %}
+    {% endif %}
 </div>
+{% endblock %}
 
 {% block scripts %}
 <script>
-    const voteURL = "{% url 'polls:vote' %}";
-    const surveyURL = "{% url 'polls:survey' %}";
-    const resultsURL = "{% url 'polls:results' %}";
+    const voteURL = "{% url 'polls:vote' polls.0.id %}";
+    const surveyURL = "{% url 'polls:survey' polls.0.id %}";
+    const resultsURL = "{% url 'polls:results' polls.0.id %}";
     const welcomeURL = "{% url 'polls:welcome' %}";
 </script>
-
 <script src="{% static 'votes/js/welcome.js' %}"></script>
 {% endblock %}
