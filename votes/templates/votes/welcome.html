@@ -2,16 +2,12 @@
 {% load static %}
 
 {% block content %}
-
-{% load static %}
-
-<link rel="stylesheet" href="{% static 'votes/css/style.css' %}">
-
-<img src="{% static 'votes/images/welcome.jpg' %}" alt="Welcome image">
 <script src="{% static 'votes/js/welcome.js' %}"></script>
+{% endblock%}
 
+{% block content %}
 <div id="welcome-page">
-    <img src="{% static 'polls/images/welcome.jpg' %}" 
+    <img src="{% static 'votes/images/welcome.jpg' %}" 
          alt="Welcome image showing learners" class="welcome-image">
 
          <ul>
@@ -34,9 +30,9 @@
       <!--ACTION BUTTONS -ONLY SHOW IF POLL EXIST --> 
        {% if polls %}
     <div class="actions">
-        <a class="btn" href="{% url 'polls:vote' %}">🗳️ Vote Now</a>
-        <a class="btn" href="{% url 'polls:survey' %}">📝 Take Survey</a>
-        <a class="btn" href="{% url 'polls:results' %}">📊 View Results</a>
+        <a class="btn" href="{% url 'polls:vote' polls.0.id %}">🗳️ Vote Now</a>
+        <a class="btn" href="{% url 'polls:survey' polls.0.id%}">📝 Take Survey</a>
+        <a class="btn" href="{% url 'polls:results' polls.0.id %}">📊 View Results</a>
         <!-- Voice control button -->
         <button class="btn" onclick="startVoiceMenu()">🎤 Start Voice Control</button>
     </div>
