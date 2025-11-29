@@ -33,6 +33,10 @@ def results(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     return render(request, 'votes/results.html', {'poll': poll})
 
+def welcome(request):
+    polls = Poll.objects.all()
+    return render(request, 'votes/welcome.html', {'polls': polls}) 
+
 # Optional: thank you page after voting
 def thank_you(request):
     return render(request, 'votes/vote.html')

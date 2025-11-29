@@ -5,6 +5,18 @@
     <img src="{% static 'polls/images/welcome.jpg' %}" 
          alt="Welcome image showing learners" class="welcome-image">
 
+         <ul>
+            {%for poll in polls %}
+            <li>
+                <a href="{% url 'polls:survey' poll.id %}">
+                    {{ poll.question }}
+                </a>
+            </li>
+            {% empty %}
+            <li>No polls available at the moment.</li>
+            {% endfor %}
+            </ul>
+            {% endblock %}
     <h2>Welcome!</h2>
     <p>This system helps South African learners including those with disabilities 
        to vote on educational issues like safety and accessibility.</p>
