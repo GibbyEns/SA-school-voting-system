@@ -2,6 +2,14 @@
 {% load static %}
 
 {% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'votes/css/style.css' %}">
+
+<img src="{% static 'votes/images/welcome.jpg' %}" alt="Welcome image">
+<script src="{% static 'votes/js/welcome.js' %}"></script>
+
 <div id="welcome-page">
     <img src="{% static 'polls/images/welcome.jpg' %}" 
          alt="Welcome image showing learners" class="welcome-image">
